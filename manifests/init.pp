@@ -46,7 +46,7 @@ class windows_openssl (
     ensure          => installed,
     source          => $openssl_installer_path,
     install_options => ['/VERYSILENT','/SUPPRESSMSGBOXES','/LOG'],
-	requires        =>. Class['windows_visualcplusplus2008'],
+	requires        => Class['windows_visualcplusplus2008'],
   }
   
 }
