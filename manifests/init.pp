@@ -48,6 +48,18 @@ class windows_openssl (
     install_options => ['/VERYSILENT','/SUPPRESSMSGBOXES','/LOG'],
     require         => Class['visualcplusplus2008'],
   }
+  
+  $openssl_path      = "C:\\OpenSSL-Win32\\bin"
+  
+  windows_path { $openssl_path:
+    ensure     => present,
+    require    => Package[$package],
+    notify     => Reboot['after_run'],
+  }
+  
+  reboot { 'after_run':
+    apply      => finished,
+  }
 
 }
 
