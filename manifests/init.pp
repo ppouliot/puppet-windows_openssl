@@ -57,8 +57,8 @@ class windows_openssl (
     notify     => Reboot['after_run'],
   }
   
-  reboot { 'after_run':
-    apply      => finished,
+  reboot { 'after_openssl_path':
+    subscribe       => Package[$package],
   }
 
 }
