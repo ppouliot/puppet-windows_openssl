@@ -49,7 +49,7 @@ class windows_openssl (
     require         => Class['visualcplusplus2008'],
   }
   
-  $openssl_path      = "C:\\OpenSSL-Win32\\bin"
+  $openssl_path      = "C:\OpenSSL-Win32\bin"
   
   windows_path { $openssl_path:
     ensure     => present,
