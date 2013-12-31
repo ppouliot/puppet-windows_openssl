@@ -54,7 +54,6 @@ class windows_openssl (
   windows_path { $openssl_path:
     ensure     => present,
     require    => Package[$package],
-    notify     => Reboot['after_run'],
   }
   
   reboot { 'after_openssl_path':
