@@ -26,9 +26,10 @@
 # 
 #
 class windows_openssl (
-  $url       = $::windows_openssl::params::url,
-  $package   = $::windows_openssl::params::package,
-  $file_path = false,
+  $url          = $::windows_openssl::params::url,
+  $package      = $::windows_openssl::params::package,
+  $openssl_path = $::windows_openssl::params::openssl_path,
+  $file_path    = false,
 ) inherits windows_openssl::params {
 
   if $file_path {
@@ -45,11 +46,9 @@ class windows_openssl (
   package { $package:
     ensure          => installed,
     source          => $openssl_installer_path,
-    install_options => ['/VERYSILENT','/SUPPRESSMSGBOXES','/LOG'],
+    install_options => ['/VERYSILENT','/SUPPRESSMSGBOXES','/LOG',"/DIR=\"${openssl_path}\""],
     require         => Class['visualcplusplus2008'],
   }
-  
-  $openssl_path      = "C:\OpenSSL-Win32\bin"
   
   windows_path { $openssl_path:
     ensure     => present,
