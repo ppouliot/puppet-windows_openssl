@@ -46,7 +46,7 @@ class windows_openssl (
   package { $package:
     ensure          => installed,
     source          => $openssl_installer_path,
-    install_options => ['/VERYSILENT','/SUPPRESSMSGBOXES','/LOG'],
+    install_options => ['/VERYSILENT','/SUPPRESSMSGBOXES','/LOG',"/DIR=\"${openssl_path}\""],
     require         => Class['visualcplusplus2008'],
   }
   
